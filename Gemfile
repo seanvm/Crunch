@@ -18,7 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development do
-    gem 'pry'
+  gem 'pry'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
