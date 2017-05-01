@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
     date = Time.now.strftime("%m/%d/%Y")
     @current_date = Date.strptime(date, "%m/%d/%Y")
   end
+  
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to root_url
+    end
+  end
 
   protected
 

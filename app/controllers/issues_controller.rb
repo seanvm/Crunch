@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_action :logged_in_user,  only: [:edit, :update, :index, :destroy]
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   # GET /issues
@@ -116,5 +117,9 @@ class IssuesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
       params.require(:issue).permit(:title,  :description, :severity, :external_url)
+    end
+    
+    def logged_in_user
+      super
     end
 end
