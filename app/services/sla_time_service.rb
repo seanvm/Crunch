@@ -1,5 +1,6 @@
 class SlaTimeService < BaseService
   require 'date'
+  EXCLUDED_STATES = ['pending','in_review','completed']
   
   # @param [Object] Issue 
   def initialize(issue)
@@ -7,8 +8,8 @@ class SlaTimeService < BaseService
   end
 
   def call
-    return 'N/A' if @issue.state == 'pending'
     now = Date.today
+    return 'N/A' if EXCLUDED_STATES.include? @issue.state
     case @issue.severity
     when 0
       return 'N/A'
