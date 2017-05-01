@@ -70,12 +70,39 @@ class IssuesController < ApplicationController
     end
   end
   
+  def confirm
+    # TODO - Add security for state updates
+    @issue = Issue.find(params[:issue_id])
+    if @issue.confirm!
+      flash.now[:success] = 'Issue has been confirmed'
+      render :template => 'issues/update_state'
+    end
+  end
+  
+  def development
+    # TODO - Add security for state updates
+    @issue = Issue.find(params[:issue_id])
+    if @issue.development!
+      flash.now[:success] = 'Issue in development'
+      render :template => 'issues/update_state'
+    end
+  end
+  
   def complete
     # TODO - Add security for state updates
     @issue = Issue.find(params[:issue_id])
     @issue.update_attribute(:completed_at, DateTime.now)
     if @issue.completed!
       flash.now[:success] = 'Issue completed'
+      render :template => 'issues/update_state'
+    end
+  end
+  
+  def unverified
+    # TODO - Add security for state updates
+    @issue = Issue.find(params[:issue_id])
+    if @issue.unverified!
+      flash.now[:success] = 'Issue is not verified'
       render :template => 'issues/update_state'
     end
   end

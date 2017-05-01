@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :issues do
     # put '/issues/:id/review', to: 'bets#review'
     put :review, defaults: { format: 'js' } #-> /issues/:id/review
-    put :complete, defaults: { format: 'js' } #-> /issues/:id/review
+    put :complete, defaults: { format: 'js' } #-> /issues/:id/complete
+    put :development, defaults: { format: 'js' } #-> /issues/:id/development
+    put :confirm, defaults: { format: 'js' } #-> /issues/:id/confirm
+    put :unverified, defaults: { format: 'js' } #-> /issues/:id/unverified
   end
   
   root 'plainpage#index'
