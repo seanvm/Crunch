@@ -73,6 +73,7 @@ class IssuesController < ApplicationController
   def complete
     # TODO - Add security for state updates
     @issue = Issue.find(params[:issue_id])
+    @issue.update_attribute(:completed_at, DateTime.now)
     if @issue.completed!
       flash.now[:success] = 'Issue completed'
       render :template => 'issues/update_state'

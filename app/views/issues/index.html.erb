@@ -61,6 +61,7 @@
                     <th class="column-title">Reported Date</th>
                     <th class="column-title">Status</th>
                     <th class="column-title">SLA</th>
+                    <th class="column-title">Completed Date</th>
                     <th class="column-title no-link last"><span class="nobr">Action</span>
                     </th>
                     <th class="bulk-actions" colspan="7">
@@ -77,17 +78,16 @@
                     <td class=" "><%= issue.title %></td>
                     <td class=" "><%= issue.description %></td>
                     <td class=" ">Sev-<%= issue.severity %></td>
-                    <td class=" ">Created:<%= issue.created_at %></td>
+                    <td class=" "><%= issue.created_at.try(:strftime, Issue.date_format) %></td>
                     <td class=" "><%= issue.state %></td>
-                    <td class=" ">Due:<%= issue.sla_countdown %></td>
+                    <td class=" ">Due: <%= issue.sla_countdown %></td>
+                    <td class=" "><%= issue.completed_at.try(:strftime, Issue.date_format) %></td>
                     <td class=" last"><%= link_to(issue) do %>View<% end %>
                   </tr>
                   <% end %>
                 </tbody>
               </table>
             </div>
-      
-    
           </div>
         </div>
       </div>

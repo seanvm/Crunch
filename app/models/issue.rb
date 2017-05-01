@@ -32,6 +32,10 @@ class Issue < ActiveRecord::Base
   
   validates :title, presence: true
   
+  def self.date_format
+    '%m/%d/%Y'
+  end
+  
   def sla_countdown
     SlaTimeService.call(self)
   end
