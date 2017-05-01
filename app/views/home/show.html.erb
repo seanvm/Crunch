@@ -1,0 +1,29 @@
+<%# views/devise/sessions/new.html.erb %>
+
+<div class="">
+  <a class="hiddenanchor" id="toregister"></a>
+  <a class="hiddenanchor" id="tologin"></a>
+
+  <div id="wrapper">
+    <div id="login" class="animate form">
+      <section class="login_content">
+      <h1>Welcome to UltimateBugManager</h1>
+          <div class="clearfix"></div>
+          <%= link_to(image_tag("google.png", :alt =>  "Sign in with Google", size: '220x48'), '/auth/google_oauth2') %>
+
+          <div class="separator">
+            <p class="change_link">New to site?
+              <a href="/auth/google_oauth2" class="to_register"> Create Account </a>
+            </p>
+            <div class="clearfix"></div>
+            <br />
+            <div>
+              <h1><i class="fa fa-bug" style="font-size: 26px;"></i> UltimateBugManager!</h1>
+
+              <p>©2015 All Rights Reserved. UBM!. Privacy and Terms</p>
+            </div>
+          </div>
+      </section>
+      <!-- content -->
+    </div>
+  </div>
