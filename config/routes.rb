@@ -14,6 +14,15 @@ Rails.application.routes.draw do
   
   root 'plainpage#index'
   get ':form' => 'plainpage#form'
+  
+  get 'sessions/create'
+  get 'sessions/destroy'
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+ 
+  resources :sessions, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
