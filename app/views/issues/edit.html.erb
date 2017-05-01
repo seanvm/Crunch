@@ -41,8 +41,8 @@
               </li>
             </ul>
             <div class="clearfix"></div>
-            <%= render 'form', issue: @issue %>
             <%= render 'state', issue: @issue %>
+            <%= render 'form', issue: @issue %>
 
             <%= link_to 'Show', @issue %> |
             <%= link_to 'Back', issues_path %>
