@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Plain Page</h3>
+        <h3>Tables <small>Some examples to get you started</small></h3>
       </div>
 
       <div class="title_right">
@@ -17,14 +17,16 @@
         </div>
       </div>
     </div>
+
     <div class="clearfix"></div>
 
     <div class="row">
+      <div class="clearfix"></div>
 
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel" style="height:600px;">
+        <div class="x_panel">
           <div class="x_title">
-            <h2>Plain Page</h2>
+            <h2>Table design <small>Custom design</small></h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -41,23 +43,51 @@
               </li>
             </ul>
             <div class="clearfix"></div>
-            
-            <h1>Issues</h1>
+          </div>
 
-            <% @issues.each do |issue| %>
-              <div class="list-group">
-                <%= link_to((issue), class: "list-group-item active") do %>
-                  <h4 class="list-group-item-heading"><%= issue.title %> (Sev-<%= issue.severity %>)</h4>
-                  <p class="list-group-item-text"><%= issue.description %></p>
-                  <p class="list-group-item-text">Created:<%= issue.created_at %></p>
-                  <p class="list-group-item-text">Due:<%= issue.sla_countdown %></p>
-                <% end %>
-              </div>
-            <% end %>
-
-            <br>
-
+          <div class="x_content">
             <%= link_to 'New Issue', new_issue_path %>
+
+            <div class="table-responsive">
+              <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                  <tr class="headings">
+                    <th>
+                      <input type="checkbox" id="check-all" class="flat">
+                    </th>
+                    <th class="column-title">Title</th>
+                    <th class="column-title">Description</th>
+                    <th class="column-title">Severity</th>
+                    <th class="column-title">Reported Date</th>
+                    <th class="column-title">Status</th>
+                    <th class="column-title">SLA</th>
+                    <th class="column-title no-link last"><span class="nobr">Action</span>
+                    </th>
+                    <th class="bulk-actions" colspan="7">
+                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @issues.each do |issue| %>
+                  <tr class="<%= cycle('even', 'odd') %> pointer">
+                    <td class="a-center ">
+                      <input type="checkbox" class="flat" name="table_records">
+                    </td>
+                    <td class=" "><%= issue.title %></td>
+                    <td class=" "><%= issue.description %></td>
+                    <td class=" ">Sev-<%= issue.severity %></td>
+                    <td class=" ">Created:<%= issue.created_at %></td>
+                    <td class=" "><%= issue.state %></td>
+                    <td class=" ">Due:<%= issue.sla_countdown %></td>
+                    <td class=" last"><%= link_to(issue) do %>View<% end %>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+      
+    
           </div>
         </div>
       </div>

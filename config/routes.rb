@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :issues
+  resources :issues do
+    # put '/issues/:id/review', to: 'bets#review'
+    put :review, defaults: { format: 'js' } #-> /issues/:id/review
+    put :complete, defaults: { format: 'js' } #-> /issues/:id/review
+  end
+  
   root 'plainpage#index'
   get ':form' => 'plainpage#form'
 

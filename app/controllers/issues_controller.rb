@@ -28,7 +28,7 @@ class IssuesController < ApplicationController
 
     respond_to do |format|
       if @issue.save
-        format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
+        format.html { redirect_to @issue, notice: 'Issue was successfully logged.' }
         format.json { render :show, status: :created, location: @issue }
       else
         format.html { render :new }
@@ -39,7 +39,7 @@ class IssuesController < ApplicationController
 
   # PATCH/PUT /issues/1
   # PATCH/PUT /issues/1.json
-  def update
+  def update    
     respond_to do |format|
       if @issue.update(issue_params)
         format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
@@ -60,6 +60,24 @@ class IssuesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def review
+    # TODO - Add security for state updates
+    @issue = Issue.find(params[:issue_id])
+    if @issue.review!
+      flash.now[:success] = 'Issue in review'
+      render :template => 'issues/update_state'
+    end
+  end
+  
+  def complete
+    # TODO - Add security for state updates
+    @issue = Issue.find(params[:issue_id])
+    if @issue.completed!
+      flash.now[:success] = 'Issue completed'
+      render :template => 'issues/update_state'
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +87,6 @@ class IssuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:title,  :description, :severity)
+      params.require(:issue).permit(:title,  :description, :severity, :external_url)
     end
 end

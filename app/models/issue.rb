@@ -33,6 +33,6 @@ class Issue < ActiveRecord::Base
   validates :title, presence: true
   
   def sla_countdown
-    SlaTimeService.call(self.severity,self.created_at)
+    SlaTimeService.call(self)
   end
 end
