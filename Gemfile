@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
