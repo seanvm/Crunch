@@ -47,4 +47,8 @@ class Issue < ActiveRecord::Base
   def sla_countdown
     SlaTimeService.call(self)
   end
+  
+  def post_to_JIRA
+    JIRAService.call(self)
+  end
 end
