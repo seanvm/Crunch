@@ -74,9 +74,12 @@ class IssuesController < ApplicationController
   def confirm
     # TODO - Add security for state updates
     @issue = Issue.find(params[:issue_id])
-    
-    if @issue.confirm! && @issue.post_to_JIRA
+    @issue.post_to_JIRA
+    if @issue.confirm! && 
       flash.now[:success] = 'Issue has been confirmed'
+      render :template => 'issues/update_state'
+    else 
+      flash.now[:success] = 'ERROR'
       render :template => 'issues/update_state'
     end
   end

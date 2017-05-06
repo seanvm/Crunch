@@ -49,6 +49,6 @@ class Issue < ActiveRecord::Base
   end
   
   def post_to_JIRA
-    JIRAService.call(self)
+    JiraService.call(self)
   end
 end
