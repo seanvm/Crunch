@@ -49,6 +49,7 @@ class Issue < ActiveRecord::Base
   end
   
   def post_to_JIRA
-    JiraService.call(self)
+    method = self.remote_id.present? ? 'put' : 'post'
+    JiraService.call(self,method)
   end
 end
