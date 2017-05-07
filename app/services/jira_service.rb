@@ -34,6 +34,7 @@ class JiraService < BaseService
     parsed_response = JSON.parse(response.body)
     remote_url = self.class.base_uri + '/browse/' + parsed_response["key"]
     @issue.update(remote_id: parsed_response["key"], remote_url: remote_url)
+    response
   end
   
   def put_data
