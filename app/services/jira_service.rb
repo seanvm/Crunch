@@ -27,8 +27,7 @@ class JiraService < BaseService
   end
   
   def get
-    options = {basic_auth: @auth}
-    self.class.get("/rest/api/latest/issue/SSP-#{@issue.id}.json", options)
+    #TODO - Fill this out
   end
   
   def parse_and_save_response(response)
