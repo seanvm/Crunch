@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
     log_in @user
-    redirect_back_or @user
+    redirect_to issues_path
   end
  
   def destroy

@@ -47,4 +47,9 @@ class Issue < ActiveRecord::Base
   def sla_countdown
     SlaTimeService.call(self)
   end
+  
+  def post_to_JIRA
+    method = self.remote_id.present? ? 'put' : 'post'
+    JiraService.call(self,method)
+  end
 end

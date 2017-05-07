@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501050643) do
+ActiveRecord::Schema.define(version: 20170506200331) do
 
   create_table "issues", force: :cascade do |t|
     t.datetime "created_at"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20170501050643) do
     t.integer  "severity"
     t.string   "state"
     t.datetime "completed_at"
-    t.string   "external_url"
+    t.string   "remote_url"
+    t.string   "remote_id"
+    t.string   "remote_status"
   end
 
   create_table "users", force: :cascade do |t|
