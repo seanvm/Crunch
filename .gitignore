@@ -25,3 +25,11 @@
 
 # Ignore application configuration
 /config/application.yml
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+tmp
+capybara*.html
+.rvmrc
