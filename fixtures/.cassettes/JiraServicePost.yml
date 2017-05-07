@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://bugcrunch.atlassian.net/rest/api/2/issue/
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"project":{"key":"SSP"},"summary":"test rspec title","description":"","issuetype":{"name":"Bug"}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic c2VhbitjcnVuY2hAdmFubXVsbGlnZW4uY2E6dWl0Njd1aXk2Nw==
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 07 May 2017 23:24:10 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Arequestid:
+      - 984x6757x1
+      X-Ausername:
+      - admin
+      X-Atenant-Id:
+      - bugcrunch.atlassian.net
+      Cache-Control:
+      - no-cache, no-store, no-transform
+      X-Content-Type-Options:
+      - nosniff
+      Set-Cookie:
+      - JSESSIONID=0829C21B3E4EEB0A949F20E630AB809F; Path=/; Secure; HttpOnly
+      - atlassian.xsrf.token=BO8Y-0ZJK-1X00-W0SM|32e146eadbc4fdf196722e984bf6dce6119eb910|lin;
+        Path=/; Secure
+      Strict-Transport-Security:
+      - max-age=315360000;includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"id":"10148","key":"SSP-33","self":"https://bugcrunch.atlassian.net/rest/api/2/issue/10148"}'
+    http_version: 
+  recorded_at: Sun, 07 May 2017 23:24:10 GMT
+recorded_with: VCR 3.0.3
