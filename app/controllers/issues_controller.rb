@@ -74,12 +74,11 @@ class IssuesController < ApplicationController
   def confirm
     # TODO - Add security for state updates
     @issue = Issue.find(params[:issue_id])
-    @issue.post_to_JIRA
-    if @issue.confirm! && 
+    if @issue.confirm! && @issue.post_to_JIRA
       flash.now[:success] = 'Issue has been confirmed'
       render :template => 'issues/update_state'
     else 
-      flash.now[:success] = 'ERROR'
+      flash.now[:danger] = 'Error updating issue'
       render :template => 'issues/update_state'
     end
   end
@@ -89,6 +88,9 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     if @issue.development!
       flash.now[:success] = 'Issue in development'
+      render :template => 'issues/update_state'
+    else 
+      flash.now[:danger] = 'Error updating issue'
       render :template => 'issues/update_state'
     end
   end
@@ -100,6 +102,9 @@ class IssuesController < ApplicationController
     if @issue.completed!
       flash.now[:success] = 'Issue completed'
       render :template => 'issues/update_state'
+    else 
+      flash.now[:danger] = 'Error updating issue'
+      render :template => 'issues/update_state'
     end
   end
   
@@ -107,7 +112,10 @@ class IssuesController < ApplicationController
     # TODO - Add security for state updates
     @issue = Issue.find(params[:issue_id])
     if @issue.unverified!
-      flash.now[:success] = 'Issue is not verified'
+      flash.now[:success] = 'Issue no longer verified'
+      render :template => 'issues/update_state'
+    else 
+      flash.now[:danger] = 'Error updating issue'
       render :template => 'issues/update_state'
     end
   end
